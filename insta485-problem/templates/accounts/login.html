@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>insta485</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+    
+    <body>
+        <header id="navbar"> 
+            <div id="home" style="font-weight: bold;">Home</div>
+            <div id="explore" style="font-weight: bold;">login</div>
+        </header>
+
+        <!-- DO NOT CHANGE THIS (aside from styling)  -->
+        <!-- TODO: ADDED style=... and placeholder=... -Kevin   -->
+        <form action="/accounts/login/" method="post" enctype="multipart/form-data" 
+        style="padding: 30px; padding-top: 60px">
+            <input type="text" name="username" placeholder="username" />
+            <input type="password" name="password" placeholder="password"/>
+            <input type="submit" value="login"/>
+        </form>
+        
+        <div style="padding: 30px;">
+            Don't have an account?
+        </div>
+        
+        <a href="/accounts/create/" style="padding: 30px;">Sign up</a>
+
+    </body>
+</html>

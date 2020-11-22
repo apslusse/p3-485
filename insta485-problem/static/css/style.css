@@ -1,0 +1,198 @@
+/*Link style*/
+a:link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+
+}
+
+a:active {
+    text-decoration: none;
+    color: black; 
+    font-weight: bold;
+}
+
+/*General*/
+#navbar {
+    padding: 4px;
+    height: 40px;
+    border-bottom: 2px solid lightgray;
+    margin-bottom: 10px;
+}
+
+#home {
+    float: left;
+    padding: 10px;
+}
+
+#user, #explore {
+    float: right;
+    padding: 10px;
+}
+
+/*Posts*/
+#posts {
+    margin: auto;
+    width: 60vw;
+}
+
+.profile-pic {
+    float: left;
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+}
+
+.post-time {
+    float: right;
+    margin-right: 10px;
+    color: rgb(153, 147, 147);
+    font-weight: bold; 
+}
+
+.post-photo {
+    width: 60vw; 
+}
+
+.post {
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    overflow: auto;
+    width: 60vw
+}
+
+.post-bar {
+    line-height: 50px;
+    height: 50px
+}
+
+.post-user {
+    float: left;
+}
+
+.comments {
+    margin: 15px;
+    padding: 3px;
+    position: relative;
+}
+
+.post-comment {
+    float: left;
+    width: 50vw;
+}
+
+.comment-content {
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.comment-user {
+    float: left;
+    margin-bottom: 10px;
+}
+
+.like-num {
+    margin-bottom: 10px;
+}
+
+/*Profile style */
+#profile-text {
+    margin: auto;
+    width: 60vw;
+    margin-top: 40px;
+}
+
+#profile-username {
+    font-size: 28pt;
+}
+
+#relationships {
+    margin-top: 10px;
+}
+
+#post-num {
+    float: left;
+    margin-right: 5px;
+}
+
+#profile-name {
+    margin-top: 10px;
+}
+
+#profile-posts {
+    margin: auto;
+    width: 60vw;
+    margin-top: 40px;
+}
+
+.post-thumb {
+    width: 25vw;
+    height: 25vw;
+    object-fit: cover;
+    float: left;
+    padding: 10px;
+}
+
+#follow-status {
+    margin-top: 10px;
+}
+
+
+/*Followers style*/
+#follower-main {
+    margin: auto;
+    width: 60vw;
+    margin-top: 40px;
+}
+
+#follower-title {
+    font-size: 28pt;
+    margin: 10px; 
+    font-weight: bold;
+}
+
+.follower-item {
+    line-height: 80px;
+    height: 80px;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.follower-status {
+    float: right;
+    margin-right: 10px;
+    color: rgb(153, 147, 147);
+    font-weight: bold; 
+}
+
+.follower-pic {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    float: left;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.follower-user {
+    font-weight: bold;
+    margin-left: 10px;
+    float: left;
+}
+
+/*post*/

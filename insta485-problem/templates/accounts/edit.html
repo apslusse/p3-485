@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>insta485</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+    
+    <body>
+        <header id="navbar"> 
+            <a href="/" id="home">Home</a>
+            <a href="/u/{{logname}}/" id="user">{{logname}}</a>
+            <a href="/explore/" id="explore">explore</a>
+        </header>
+
+        <img src="/uploads/{{  filename  }}" alt="ProfilePhoto" >
+        <p>{{  logname  }}</p>
+
+        <form action="/accounts/edit/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="text" name="fullname" value="{{  fullname  }}"/>
+            <input type="text" name="email" value="{{  email  }}"/>
+            <input type="submit" name="update" value="submit"/>
+        </form>
+        <a href="/accounts/password/">Change password</a>
+        <a href="/accounts/delete/">Delete account</a>
+
+
+    </body>
+</html>

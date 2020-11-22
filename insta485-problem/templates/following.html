@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>insta485</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+    
+    <body>
+        <header id="navbar"> 
+            <a href="/" id="home">Home</a>
+            <a href="{{  url_for('show_user', user_url_slug=logname)  }}" id="user">{{logname}}</a>
+            <a href="/explore/" id="explore">explore</a>
+        </header>
+        
+        <div id='follower-main'>
+            <div id='follower-title'>
+                Following
+            </div>
+            
+            {% for follows in following %}
+            <div class='follower-item'>
+                <img src="/uploads/{{follows.user_img_url}}" 
+                alt="ProfilePhoto" class="follower-pic">
+                
+                <a href="{{  url_for('show_user', user_url_slug=follows.username)  }}" class="follower-user">{{follows.username}}</a>
+
+                {% if logname != follows.username %}
+                    {% if follows.logname_follows_username == true %}
+                    <div class='follower-status'>
+                        following
+                        
+                    </div>
+                    <form action="/u/{{ user }}/following/" method="post" enctype="multipart/form-data">
+                            <input type="submit" name="unfollow" value="unfollow"/>
+                            <input type="hidden" name="username" value="{{follows.username}}"/>
+                    </form>
+                    {% elif follows.logname_follows_username == false %}
+                    <div class='follower-status'>
+                        not following
+                        
+                    </div>
+                    <form action="/u/{{ user }}/following/" method="post" enctype="multipart/form-data">
+                            <input type="submit" name="follow" value="follow"/>
+                            <input type="hidden" name="username" value="{{follows.username}}"/>
+                    </form>
+                    {% endif %}
+                {% endif %}
+            </div>
+            {% endfor %}
+            
+        </div>
+        
+    </body>
+
+</html>

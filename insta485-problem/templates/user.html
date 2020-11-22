@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--last edited: Tues 2:10-->
+        <meta charset="utf-8">
+        <title>insta485</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+
+    <body>
+        <header id="navbar"> 
+            <a href="/" id="home">Home</a>
+            <a href="/u/{{logname}}/" id="user">{{logname}}</a>
+            <a href="/explore/" id="explore">explore</a>
+        </header>
+
+        {% if username == logname %}
+        <p>
+            <a href="/accounts/edit/" >Edit profile</a>
+        </p>
+        {% endif %}
+        
+        <div id="profile-text">
+            <div id="profile-username">
+                {{username}}
+            </div>
+            
+
+            {% if username != logname %}
+                <a href="/accounts/edit/" id="edit">Edit Page</a>
+                {% if logname_follows_username == true %}
+                <div id="follow-status">
+                    following 
+                    <form action="/u/{{username}}/" method="post" enctype="multipart/form-data">
+                        <input type="submit" name="unfollow" value="unfollow"/>
+                        <input type="hidden" name="username" value="{{username}}"/>
+                      </form>
+                </div>
+                {% elif logname_follows_username == false %}
+                <div id="follow-status">
+                    not following 
+                    <form action="/u/{{username}}/" method="post" enctype="multipart/form-data">
+                        <input type="submit" name="follow" value="follow"/>
+                        <input type="hidden" name="username" value="{{username}}"/>
+                      </form>
+                </div>
+                {% endif %}
+            {% endif %}
+
+            <div id="relationships">
+                <div id="post-num">
+                {% if total_posts == 1 %}
+                    {{total_posts}} post
+                {% elif total_posts != 1 %}
+                    {{total_posts}} posts
+                {% endif %}
+                </div>
+
+                <a href="/u/{{username}}/followers/">
+                    <!--TODO why this/total posts !! definite error changed-->
+                    {% if followers == 1 %}
+                    {{followers}} follower
+                    {% elif followers != 1 %}
+                    {{followers}} followers
+                    {% endif %}
+                </a>
+
+                <a href="/u/{{username}}/following/">{{following}} following</a>
+            </div>
+
+            <div id="profile-name">
+                {{fullname}}
+            </div>
+        </div>
+
+        <div id="profile-posts">
+            {% for post in posts %}
+            <a href="/p/{{post.postid}}/">
+                <img src="{{post.img_url}}" 
+                alt="PostThumb" class="post-thumb">
+            </a>
+            {% endfor %}
+        </div>
+        {% if username == logname %}
+
+        <form action="/accounts/logout/" method="post" enctype="multipart/form-data">
+            <input type="submit" name="logout" value="Logout"/>
+          </form>
+
+          <form action="/u/{{username}}/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" name="create_post" value="upload new post"/>
+          </form>
+
+
+        {% endif %}
+
+
+        
+    </body>
+
+</html>
