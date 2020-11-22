@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>insta485</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+    
+    <body>
+        <header id="navbar"> 
+            <a href="/" id="home">Home</a>
+            <a href="/u/{{logname}}/" id="user">{{logname}}</a>
+            <a href="/explore/" id="explore">explore</a>
+        </header>
+
+        <div id='follower-main'>
+            <div id='follower-title'>
+                Discover People
+            </div>
+        {% for not_follower in not_following %}
+            <div class='follower-item'>
+                <img src="/uploads/{{not_follower.user_img_url}}" 
+                alt="ProfilePhoto" class="follower-pic">
+                
+                <a href="/u/{{not_follower.username}}/" class="follower-user">{{not_follower.username}}</a>
+            </div>
+
+            <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+            <form action="/explore/" method="post" enctype="multipart/form-data">
+                <input type="submit" name="follow" value="follow"/>
+                <input type="hidden" name="username" value="{{not_follower.username}}"/>
+            </form>
+  
+        {% endfor %}
+        </div>
+    </body>
+</html>

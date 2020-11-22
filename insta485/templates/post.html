@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+          <!-- last edited: Sat 11:08 -->
+        <meta charset="utf-8">
+        <title>insta485</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+    
+    <body>
+        <header id="navbar"> 
+            <a href="/" id="home">Home</a>
+            <a href="/u/{{logname}}/" id="user">{{logname}}</a>
+            <a href="/explore/" id="explore">explore</a>
+        </header>
+
+        <div class="post">
+            <div class="post-bar">
+                <a href="/u/{{owner}}/">
+                <img src="{{owner_img_url}}" 
+                alt="ProfilePhoto" class="profile-pic">
+                </a>
+                
+                <a href="/u/{{owner}}/" class="post-user">{{owner}}</a>
+
+                <a href="/p/{{postid}}/" class="post-time">{{timestamp}}</a>
+            </div>
+            
+            <img src="{{img_url}}" 
+            alt="PostPhoto" class="post-photo">
+            
+            <div class="comments">
+                {% if likes == 1 %}
+                <div class="like-num"> {{likes}} like </div>
+                {% elif likes != 1 %}
+                <div class="like-num"> {{likes}} likes </div>
+                {% endif %}
+
+                {% for comment in comments %}
+                <div class="post-comment"> 
+                    <a href="/u/{{comment.owner}}/" class="comment-user">{{comment.owner}}</a>
+                    <div class="comment-content"> {{comment.text}} </div>
+                     <!-- TODO: not working -->
+                    {% if comment.owner == logname %}
+                    <form action="/p/{{postid}}/" method="post" enctype="multipart/form-data">
+                      <input type="hidden" name="commentid" value="{{comment.commentid}}"/>
+                      <input type="submit" name="uncomment" value="delete"/>
+                    </form>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                
+                <!-- Display Like Button depending on like status of post -->
+                {% if not like_status %}
+                <!-- Like Button -->
+                <form action="/p/{{postid}}/" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="postid" value="{{postid}}"/>
+                    <input type="submit" name="like" value="like"/>
+                </form>
+              {% elif like_status %}
+                <!-- Unlike Button -->
+                <form action="/p/{{postid}}/" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="postid" value="{{postid}}"/>
+                  <input type="submit" name="unlike" value="unlike"/>
+                </form>
+              {% endif %}
+
+              <!-- TODO: not sure if form action="/" url is supposed to be dynamic -->
+              <!-- Comment submission form -->
+              <form action="/p/{{postid}}/" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="postid" value="{{postid}}"/>
+                <input type="text" name="text"/>
+                <input type="submit" name="comment" value="comment"/>
+              </form>
+              
+              
+              {% if logname == owner %}
+                <form action="/p/{{postid}}/" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="postid" value="{{postid}}"/>
+                  <input type="submit" name="delete" value="delete this post"/>
+                </form>
+              {% endif %}
+
+            </div>
+        </div>
+    </body>
+
+</html>

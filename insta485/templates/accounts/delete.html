@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>insta485</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+    
+    <body>
+        <header id="navbar"> 
+            <a href="/" id="home">Home</a>
+            <a href="/u/{{logname}}/" id="user">{{logname}}</a>
+            <a href="/explore/" id="explore">explore</a>
+        </header>
+
+        <p>{{ logname }}</p>
+        <form action="/accounts/delete/" method="post" enctype="multipart/form-data">
+            <input type="submit" name="delete" value="confirm delete account"/>
+        </form>
+    </body>
+</html>

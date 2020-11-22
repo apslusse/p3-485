@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>insta485</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    </head>
+    <!--last edit: sunday 5:27-->
+    <body>
+        <header id="navbar"> 
+            
+        </header>
+        <p align = right>
+        <a href="/accounts/login/" >Login</a>
+        </p>
+                    <!-- DO NOT CHANGE THIS (aside from styling) -->
+            <form action="/accounts/create/" method="post" enctype="multipart/form-data">
+                <p>Photo <input type="file" name="file"> </p>
+                <p>Name <input type="text" name="fullname"/></p>
+                <p>Username <input type="text" name="username"/></p>
+                <p>Email <input type="text" name="email"/></p>
+                <p>Password <input type="password" name="password"/></p>
+                <p><input type="submit" name="signup" value="sign up"/></p>
+            </form>
+    </body>
+</html>
